@@ -1,0 +1,28 @@
+dependencies:
+  # - <organization>/<repo>@<version> 这是一个依赖项的例子，用于从GitHub上安装一个合约库，格式为<组织>/<库>@<版本>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+
+compiler:
+  solc:
+    remappings:
+      # - <prefix>=<target> 这是一个重映射的例子，格式为<前缀>=<目标>
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1"
+
+dotenv: .env  # 从.env文件加载环境变量
+networks:
+  default: development
+  goerli:
+    eth_usd_price_feed: "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e"
+    verify: True
+  mainnet-fork-dev:
+    eth_usd_price_feed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+    verify: False
+  development:
+    verify: False
+  ganache-local:
+    verify: False
+
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+  
